@@ -7,6 +7,7 @@ module('Acceptance | super rentals', function (hooks) {
 
   test('visiting /', async function (assert) {
     await visit('/');
+
     assert.equal(currentURL(), '/');
     assert.dom('h2').hasText('Welcome to Super Rentals!');
 
@@ -18,6 +19,7 @@ module('Acceptance | super rentals', function (hooks) {
 
   test('visiting /about', async function (assert) {
     await visit('/about');
+
     assert.equal(currentURL(), '/about');
     assert.dom('h2').hasText('About Super Rentals');
 
@@ -25,5 +27,17 @@ module('Acceptance | super rentals', function (hooks) {
     await click('a.button');
 
     assert.equal(currentURL(), '/getting-in-touch');
+  });
+
+  test('visiting /getting-in-touch', async function (assert) {
+    await visit('/getting-in-touch');
+    
+    assert.equal(currentURL(), '/getting-in-touch');
+    assert.dom('h2').hasText('Contact Us');
+
+    assert.dom('a.button').hasText('About');
+    await click('a.button');
+
+    assert.equal(currentURL(), '/about');
   });
 });
