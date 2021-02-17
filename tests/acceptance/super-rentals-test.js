@@ -15,4 +15,15 @@ module('Acceptance | super rentals', function (hooks) {
 
     assert.equal(currentURL(), '/about');
   });
+
+  test('visiting /about', async function (assert) {
+    await visit('/about');
+    assert.equal(currentURL(), '/about');
+    assert.dom('h2').hasText('About Super Rentals');
+
+    assert.dom('a.button').hasText('Contact Us');
+    await click('a.button');
+
+    assert.equal(currentURL(), '/getting-in-touch');
+  });
 });
