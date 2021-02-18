@@ -5,9 +5,11 @@
 
   <div class="rentals">
     <ul class="results">
+      {{#each @model as |property|}}
       <li>
-        <Rental @rental={{@model}} />
+        <Rental @rental={{property}} />
       </li>
+      {{/each}}
     </ul>
   </div>
 </Jumbo>
